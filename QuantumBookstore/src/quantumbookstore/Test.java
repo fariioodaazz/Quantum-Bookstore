@@ -23,20 +23,39 @@ public class Test {
         
 
         System.out.println("--- Testing buyBook() ---");
-        testPurchase(store, "E101", 1, "user@email.com", "");      
-        testPurchase(store, "P102", 2, "", "12B Barker St");         
-        testPurchase(store, "SC101", 1, "", "");                    
-        testPurchase(store, "P101", 20, "", "12B Barker St");               
-    }
-    
-    private static void testPurchase(QuantumBookstore store, String ISBN, int quantity, String email, String address) {
+        System.out.println("Attempting to buy: E101 x1");
         try {
-            System.out.println("Attempting to buy: " + ISBN + " x" + quantity);
-            String result = store.buyBook(ISBN, quantity, email, address);
+            String result = store.buyBook("E101", 1, "user@email.com", "");
             System.out.println(result);
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
         System.out.println();
+        
+        System.out.println("Attempting to buy: P102 x2");
+        try {
+            String result = store.buyBook("P102", 2, "", "12B Barker St");
+            System.out.println(result);
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        System.out.println();
+        
+        System.out.println("Attempting to buy: SC101 x1");
+        try {
+            String result = store.buyBook("SC101", 1, "", "");
+            System.out.println(result);
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        System.out.println();
+        
+        System.out.println("Attempting to buy: P101 x20");
+        try {
+            String result = store.buyBook("P101", 20, "", "12B Barker St");
+            System.out.println(result);
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 }
